@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
    TextView nombreUsuario;
-   Button btn1,btn2;
+   Button btn1,btn2,send;
    String Tag = "Prueba";
 
     @Override
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         nombreUsuario = (TextView) findViewById(R.id.usuario);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
+        send = findViewById(R.id.btnSend);
 
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 nombreUsuario.setText("Presioné Boton Dos");
+            }
+        });
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                enviarPantalla2();
             }
         });
 
@@ -77,4 +85,13 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i(Tag,"Estoy en OnDestroy");
     }
+
+    privated void enviarPantalla2(){
+        String textoActual = nombreUsuario.getText().toString();
+        String nombre = "sebastian"
+        intent pasarinfo = new Intent(this,Pantalla2.class)
+        pasarinfo.putExtra("name", nombre);
+        starActivity(pasarinfo);
+    }
+
 }
